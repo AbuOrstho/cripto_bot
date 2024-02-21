@@ -7,7 +7,7 @@ class BitMart:
     def __init__(self):
         # Загрузка данных из файла конфигурации
         self.web_data = json.load(
-            open(r'url_lib.json', 'r',
+            open(r'C:\\Users\susur\OneDrive\Рабочий стол\Турпал Крипта\cripto\url_lib.json', 'r',
                  encoding="UTF-8"))  # Укажите правильный путь к файлу
         self.base_url = self.web_data["BitMart"]["url"]
         self.all_tickers = self.web_data["BitMart"]["all_tickers"]
