@@ -3,11 +3,17 @@ import asyncio
 import sys
 
 # Предполагаем, что эти импорты относятся к вашим модулям и они уже адаптированы под асинхронный запуск
-from Coinex.Coinex import coinex
-from LBank.LBank import lbank
+from Binance.Binance import binance
+from Bitfinex.Bitfinex import bitfinex
 from BitMart.BitMart import bitmart
+from Coinex.Coinex import coinex
 from Huobi.Huobi import huobi
+from Kraken.Kraken import kraken
+from KuCoin.KuCoin import kucoin
+from LBank.LBank import lbank
 from MEXC.MEXC import mexc
+from OKX.OKX import okx
+from Poloniex.Poloniex import poloniex
 
 
 async def main():
@@ -15,11 +21,17 @@ async def main():
 
     # Предполагаем, что run методы асинхронные и можно вызвать await на них
     await asyncio.gather(
-        coinex.run(),
-        lbank.run(),
+        binance.run(),
+        bitfinex.run(),
         bitmart.run(),
+        coinex.run(),
         huobi.run(),
-        mexc.run()
+        kraken.run(),
+        kucoin.run(),
+        lbank.run(),
+        mexc.run(),
+        okx.run(),
+        poloniex.run()
     )
 
     print(f"Время выполнения: {time.time() - start_time} секунд.")

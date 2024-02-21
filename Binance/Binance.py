@@ -3,19 +3,19 @@ import aiohttp
 import asyncio
 
 
-class BitMart:
+class Binance:
     def __init__(self):
         # Загрузка данных из файла конфигурации
         self.web_data = json.load(
             open(r'C:\\Users\susur\OneDrive\Рабочий стол\Турпал Крипта\cripto\url_lib.json', 'r',
                  encoding="UTF-8"))  # Укажите правильный путь к файлу
-        self.base_url = self.web_data["BitMart"]["url"]
+        self.base_url = self.web_data["Binance"]["url"]
 
         # Создание списка URL и их соответствующих ключей
         self.url_keys = {
-            self.web_data["BitMart"]["all_tickers"]: "all_tickers",
-            self.web_data["BitMart"]["all_name_tickers"]: "all_name_tickers",
-            self.web_data["BitMart"]["commission"]: "commission"
+            self.web_data["Binance"]["all_tickers"]: "all_tickers",
+            self.web_data["Binance"]["all_name_tickers"]: "all_name_tickers",
+            self.web_data["Binance"]["commission"]: "commission"
         }
         self.urls = list(self.url_keys.keys())
 
@@ -26,7 +26,7 @@ class BitMart:
             data = await response.text()
             # Использование ключа для создания имени файла
             key = self.url_keys[url]
-            filename = f"BitMart\\response_{key}.json"
+            filename = f"Binance\\response_{key}.json"
             with open(filename, 'w', encoding="UTF-8") as file:
                 file.write(data)
                 print(f"Данные сохранены в {filename}")
@@ -43,4 +43,4 @@ class BitMart:
         await self.fetch_all()
 
     # Использование класса для выполнения запросов и сохранения результатов
-bitmart = BitMart()
+binance = Binance()
