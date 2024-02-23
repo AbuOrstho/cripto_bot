@@ -16,14 +16,14 @@ lbank_tickers = json.load(open(r'LBank\response_all_tickers.json', 'r', encoding
 mexc_tickers = json.load(open(r'MEXC\response_all_tickers.json', 'r', encoding="UTF-8"))
 
 
-# Количество монет на каждой бирже которые есть в топ 200
-print("Coinex", len(all_token["Coinex"]["coin"]))
-print("LBank", len(all_token["LBank"]["coin"]))
-print("MEXC", len(all_token["MEXC"]["coin"]))
-print("BitMart", len(all_token["BitMart"]["coin"]))
-print("Huobi", len(all_token["Huobi"]["coin"]))
-print("Binance", len(all_token["Binance"]["coin"]))
-print("KuCoin", len(all_token["KuCoin"]["coin"]))
+# # Количество монет на каждой бирже которые есть в топ 200
+# print("Coinex", len(all_token["Coinex"]["coin"]))
+# print("LBank", len(all_token["LBank"]["coin"]))
+# print("MEXC", len(all_token["MEXC"]["coin"]))
+# print("BitMart", len(all_token["BitMart"]["coin"]))
+# print("Huobi", len(all_token["Huobi"]["coin"]))
+# print("Binance", len(all_token["Binance"]["coin"]))
+# print("KuCoin", len(all_token["KuCoin"]["coin"]))
 
 
 # Файл со всеми коинами на каждой бирже
@@ -112,7 +112,6 @@ def prices():
             kucoin_coin = kt["symbol"].replace("_", "").upper()
             if kucoin_coin == i:
                 coins_prices[i]["MEXC"] = float(kt["price"])
-    print(coins_prices)
     return coins_prices
 
 

@@ -16,28 +16,23 @@ mexc_tickers = json.load(open(r'MEXC\response_all_tickers.json', 'r', encoding="
 
 
 def final_result():
+    max_spread = ""
+    max_number_spread = 0
     for i in coin_list:
-        # if i[1] == "Coinex" or i[3] == "Coinex":
-        #     fees = coinex_commission["data"][i[0]]
-        #     print(i)
-        #     print(fees["maker_fee_rate"], fees["taker_fee_rate"])
-
-        spread = ((i[4] - i[2]) / i[2]) * 100
-        if spread > 5:
-            continue
-        else:
+        current_spread = ((i[4] - i[2]) / i[2]) * 100
+        if current_spread > max_number_spread and current_spread <= 5:
+            max_number_spread = current_spread
             p = 10000
-            print(f"Пара {i[0]}\n"
-                  f"Минимальная цена: {i[2]} на бирже: {i[1]}\n"
-                  f"Максимальная цена: {i[4]} на бирже: {i[3]}\n"
-                  f"Спред: {spread - 0.001 - 0.001}%\n"
-                  f"Комиссия тейкера: {0.001}%\n"
-                  f"Комиссия мейкера: {0.001}%\n"
-                  f"Комиссия за сеть: {fee.fee()} USDT\n"
-                  f"При начальной сумме в {p} итог: {(p / 100 * (spread - 0.001 - 0.001) - 1)}")
-            print()
-            print()
-            print()
+            max_spread += f"""Пара {i[0]}
+Минимальная цена: {i[2]} на бирже: {i[1]}
+Максимальная цена: {i[4]} на бирже: {i[3]}
+Спред: {current_spread - 0.001 - 0.001}%
+Комиссия тейкера: {0.001}%
+Комиссия мейкера: {0.001}%
+Комиссия за сеть: {fee.fee()} USDT
+При начальной сумме в {p} итог: {(p / 100 * (current_spread - 0.001 - 0.001) - 1)}
 
 
-final_result()
+"""
+
+    return max_spread
