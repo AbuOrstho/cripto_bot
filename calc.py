@@ -2,22 +2,25 @@ import spread
 import json
 import all_fees.fee as fee
 
-
 coin_list = spread.calc()
 
-bitmart_commission = json.load(open(r'BitMart\response_1.json', 'r', encoding="UTF-8"))
-coinex_commission = json.load(open(r'Coinex\response_2.json', 'r', encoding="UTF-8"))
-huobi_commission = json.load(open(r'Huobi\response_1.json', 'r', encoding="UTF-8"))
-lbank_commission = json.load(open(r'LBank\response_1.json', 'r', encoding="UTF-8"))
-mexc_commission = json.load(open(r'MEXC\response_1.json', 'r', encoding="UTF-8"))
+binance_tickers = json.load(open(r'Binance\response_all_tickers.json', 'r', encoding="UTF-8"))  # 1
+bitfinex_tickers = json.load(open(r'Bitfinex\response_all_tickers.json', 'r', encoding="UTF-8"))  # 2
+bitmart_tickers = json.load(open(r'BitMart\response_all_tickers.json', 'r', encoding="UTF-8"))  # 3
+coinex_tickers = json.load(open(r'Coinex\response_all_tickers.json', 'r', encoding="UTF-8"))  # 4
+huobi_tickers = json.load(open(r'Huobi\response_all_tickers.json', 'r', encoding="UTF-8"))  # 5
+kraken_tickers = json.load(open(r'Kraken\response_all_tickers.json', 'r', encoding="UTF-8"))  # 6
+kucoin_tickers = json.load(open(r'KuCoin\response_all_tickers.json', 'r', encoding="UTF-8"))  # 7
+lbank_tickers = json.load(open(r'LBank\response_all_tickers.json', 'r', encoding="UTF-8"))  # 8
+mexc_tickers = json.load(open(r'MEXC\response_all_tickers.json', 'r', encoding="UTF-8"))  # 9
 
 
 def final_result():
     for i in coin_list:
-        if i[1] == "Coinex" or i[3] == "Coinex":
-            fees = coinex_commission["data"][i[0]]
-            print(i)
-            print(fees["maker_fee_rate"], fees["taker_fee_rate"])
+        # if i[1] == "Coinex" or i[3] == "Coinex":
+        #     fees = coinex_commission["data"][i[0]]
+        #     print(i)
+        #     print(fees["maker_fee_rate"], fees["taker_fee_rate"])
 
         spread = ((i[4] - i[2]) / i[2]) * 100
         if spread > 5:

@@ -42,3 +42,5 @@ if __name__ == "__main__":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     asyncio.run(main())
+
+from calc import final_result
