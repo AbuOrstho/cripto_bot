@@ -23,7 +23,7 @@ def final_result():
         if current_spread > max_number_spread and current_spread <= 5:
             max_number_spread = current_spread
             p = 10000
-            max_spread += f"""Пара {i[0]}
+            max_spread = f"""Пара {i[0]}
 Минимальная цена: {i[2]} на бирже: {i[1]}
 Максимальная цена: {i[4]} на бирже: {i[3]}
 Спред: {current_spread - 0.001 - 0.001}%

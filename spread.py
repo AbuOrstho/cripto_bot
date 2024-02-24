@@ -62,13 +62,11 @@ all_lists = coinex_list + lbank_list + mexc_list + bitmart_list + huobi_list + b
 
 # Подсчитаем, сколько раз каждый элемент встречается в объединенном списке
 counter = Counter(all_lists)
-
 # Найдем элементы, встречающиеся в 2, 3 и 4 списках
 two_lists = [item for item, count in counter.items() if count == 2]
 three_lists = [item for item, count in counter.items() if count == 3]
 four_lists = [item for item, count in counter.items() if count == 4]
 five_lists = [item for item, count in counter.items() if count == 7]
-
 
 def prices():
     # Инициализируем словарь для хранения результатов
@@ -83,10 +81,10 @@ def prices():
             if bitmart_coin == i:
                 coins_prices[i]["Bitmark"] = float(bp["last_price"])
 
-        for cp in coinex_tickers:
+        for cp in coinex_tickers['data']["ticker"]:
             coinex_coin = cp.replace("_", "").upper()
             if coinex_coin == i:
-                coins_prices[i]["Coinex"] = float(coinex_prices[cp]['last'])
+                coins_prices[i]["Coinex"] = float(coinex_tickers['data']["ticker"][cp]['last'])
 
         for hp in huobi_tickers:
             huobi_coin = hp["symbol"].replace("_", "").upper()
@@ -109,9 +107,9 @@ def prices():
                 coins_prices[i]["Binance"] = float(binp["price"])
 
         for kt in kucoin_tickers:
-            kucoin_coin = kt["symbol"].replace("_", "").upper()
+            kucoin_coin = kt["symbol"].replace("-", "").upper()
             if kucoin_coin == i:
-                coins_prices[i]["MEXC"] = float(kt["price"])
+                coins_prices[i]["KuCoin"] = float(kt["last"])
     return coins_prices
 
 
