@@ -16,7 +16,7 @@ from MEXC.MEXC import mexc
 # Импорт вашего метода final_result
 from calc import final_result
 
-bot_token = "6009483506:AAETJJrvtMXP3HKdmviJXE7TT-orR4MKc54"
+bot_token = ""
 bot = Bot(bot_token)
 dp = Dispatcher(bot)
 
